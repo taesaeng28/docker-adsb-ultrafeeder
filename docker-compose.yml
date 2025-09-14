@@ -6,6 +6,7 @@ services:
     image: ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf
     container_name: ultrafeeder
     hostname: ultrafeeder
+    privileged: true
     restart: unless-stopped
     device_cgroup_rules:
       - "c 189:* rwm"
