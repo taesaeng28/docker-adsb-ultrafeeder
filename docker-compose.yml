@@ -25,7 +25,7 @@ services:
       # - READSB_RTLSDR_DEVICE=${ADSB_SDR_SERIAL}
       # - READSB_RTLSDR_PPM=${ADSB_SDR_PPM}
       - READSB_NET_ONLY=true
-      - READSB_INPUT=30005:beast_in
+      - READSB_INPUT=dump1090:30005:beast_in
       #
       # --------------------------------------------------
       # readsb/decoder parameters:
