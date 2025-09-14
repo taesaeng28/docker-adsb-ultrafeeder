@@ -13,7 +13,6 @@ services:
     ports:
       - 8080:80 # to expose the web interface
       - 9273-9274:9273-9274 # to expose the statistics interface to Prometheus
-      - 30005:30005
     environment:
       # --------------------------------------------------
       # general parameters:
@@ -21,10 +20,12 @@ services:
       - TZ=${FEEDER_TZ}
       # --------------------------------------------------
       # SDR related parameters:
-      - READSB_DEVICE_TYPE=rtlsdr
-      - READSB_GAIN=auto
-      - READSB_RTLSDR_DEVICE=${ADSB_SDR_SERIAL}
-      - READSB_RTLSDR_PPM=${ADSB_SDR_PPM}
+      # - READSB_DEVICE_TYPE=rtlsdr
+      # - READSB_GAIN=auto
+      # - READSB_RTLSDR_DEVICE=${ADSB_SDR_SERIAL}
+      # - READSB_RTLSDR_PPM=${ADSB_SDR_PPM}
+      - READSB_NET_ONLY=true
+      - READSB_INPUT=30005:beast_in
       #
       # --------------------------------------------------
       # readsb/decoder parameters:
@@ -104,7 +105,6 @@ services:
       - /opt/adsb/ultrafeeder/globe_history:/var/globe_history
       - /opt/adsb/ultrafeeder/graphs1090:/var/lib/collectd
       - /proc/diskstats:/proc/diskstats:ro
-      - /dev/bus/usb:/dev/bus/usb
     tmpfs:
       - /run:exec,size=256M
       - /tmp:size=128M
